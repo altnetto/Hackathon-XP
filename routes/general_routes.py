@@ -10,10 +10,6 @@ bp_general = Blueprint('general', __name__)
 
 @bp_general.get('/users')
 def get_users():
-    headers = {
-        'Authorization': session.get('token')
-    }    
-
     resp = rq.get(sv.MAIN_URL + '/users')
 
     return resp

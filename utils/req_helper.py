@@ -6,9 +6,10 @@ import requests as rq
 
 def render_auth():    
     headers = {
-        'Authorization': session.get('xp_token')
+        'Authorization': session.get('xp_token'),
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'PostmanRuntime/7.29.0'
     }
-
     cookies = session.get('xp_cookies')
 
     return headers, cookies
@@ -19,7 +20,7 @@ def get(url: str, **kwargs):
 
     resp = rq.get(url, headers=headers, cookies=cookies, **kwargs)
     
-    if resp.status_code == 403:
+    if resp.status_code == 401:
         get_access_token()
 
     resp = rq.get(url, headers=headers, cookies=cookies, **kwargs)
@@ -32,7 +33,7 @@ def post(url: str, **kwargs):
 
     resp = rq.post(url, headers=headers, cookies=cookies, **kwargs)
     
-    if resp.status_code == 403:
+    if resp.status_code == 401:
         get_access_token()
 
     resp = rq.post(url, headers=headers, cookies=cookies, **kwargs)

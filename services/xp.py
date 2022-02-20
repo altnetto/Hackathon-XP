@@ -25,7 +25,7 @@ def get_access_token():
 
     data = resp.json()
 
-    session['xp_token'] = 'Bearer' + data.get('access_token', '')
+    session['xp_token'] = 'Bearer ' + data.get('access_token', '')
     session['xp_expires_in'] = data.get('expires_in')
     session['xp_cookies'] = dict(resp.cookies)
 
