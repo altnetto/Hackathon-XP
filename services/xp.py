@@ -2,12 +2,13 @@ import requests as rq
 import system_variables as sv
 
 
-MAIN_URL = sv.XP_MAIN_URL
+TOKEN_URL = sv.TOKEN_URL
 
 
 def get_access_token():
     headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'PostmanRuntime/7.29.0'
     }
 
     data = {
@@ -16,7 +17,7 @@ def get_access_token():
         'client_secret': sv.XP_SECRET_KEY
     }
 
-    resp = rq.post(f'{MAIN_URL}access-token',
+    resp = rq.post(TOKEN_URL,
                    headers=headers,
                    data=data)
 
