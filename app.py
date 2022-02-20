@@ -1,17 +1,19 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 
 db = SQLAlchemy()
+
 
 def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_object('config.Config')
 
     db.init_app(app)
+    CORS(app)
 
     from routes import init_app
-
     init_app(app)
 
     return app

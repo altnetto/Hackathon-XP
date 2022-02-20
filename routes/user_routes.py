@@ -1,8 +1,15 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from models import User
 
 
 bp_user = Blueprint('user', __name__, url_prefix='/user')
+
+
+@bp_user.post('/login')
+def login_user():
+    # try:
+    #     data = request.json()
+    pass
 
 
 @bp_user.get('/')
