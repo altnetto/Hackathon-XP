@@ -1,5 +1,6 @@
+import requests as rq
+
 from flask import Blueprint, request
-from models import User
 
 
 bp_user = Blueprint('user', __name__, url_prefix='/user')
